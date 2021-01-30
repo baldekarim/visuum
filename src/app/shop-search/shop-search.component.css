@@ -1,0 +1,59 @@
+.categories-menu {
+    line-height: 20px; 
+    display: table-cell;
+    vertical-align: middle;
+    background-color: #f0c59a;
+}
+
+.categories-names a {
+    color: black;
+}
+
+
+.form-inline {
+    align-items: center;
+    padding-top: 0px;
+}
+
+.jumbotron {
+    background-color: white;
+    border-radius: 15px;
+    padding: 10px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.jumbotron button {
+    position: relative;
+    top: 30px;
+    width: 350px;
+    height: 40px;
+    text-align: center;
+    font-size: large;
+    border-radius: 5px;
+    background-color: #ffb570;
+}
+
+select {
+    font-family: fontAwesome;
+}
+
+input[type=text], select {
+    width:100%; margin:8px 0; outline:none; padding:8px; box-sizing:border-box; height:45px;
+}
+
+.input-icone input[type=text] {
+    padding-left:35px;
+}
+
+.input-icone {
+    position:relative;
+}
+
+.input-icone i {
+    position:absolute; top:8px; padding:14px 12px; color:#ffb570; 
+}
+
+input[type=text]:hover {
+    background: #f2f2f2; 
+}

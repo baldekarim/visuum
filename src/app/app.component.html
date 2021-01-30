@@ -1,8 +1,42 @@
-<h1>
-  Bienvenue chez {{title}}
-</h1>
+<div class="page-header">
+    <div id="search-top-page"><input type="text" class="form-control" placeholder="Rechercher"></div>
+    <div id="title-top-page"><a href="#" routerLink="/">{{title}}</a></div>
+    <div id="connection-button">
+      <a class="top-page" href="#" routerLink="/login">
+        <span class="oi oi-person" title="Connexion" aria-hidden="true"> Connexion</span>
+      </a>
+    </div>
+</div>
 
-<h3>Développement en cours...</h3>
+<nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" >
+          <a href="#" routerLink="/companies">ENTREPRISES</a>
+        </li>
+        <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+          <a href="#" routerLink="/shops">BOUTIQUES</a>
+        </li>
+        <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+          <a href="#" routerLink="/vouchers">BONS D'ACHAT</a>
+        </li>
+        <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+          <a href="#" routerLink="/jobs">STAGE/EMPLOI</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
 
-<vsm-home></vsm-home>
+<router-outlet></router-outlet>

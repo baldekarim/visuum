@@ -1,0 +1,32 @@
+<div *ngIf="displayNoneResultMessage" class="container">
+  <p>{{noneResultMessage}}</p>
+  <p>Essayez de vérifier votre orthographe ou d’élargir les paramètres de votre recherche</p>
+</div>
+
+<div class="container">
+  <div class="shop_list">
+    <div  class="row" *ngFor="let i of rows | paginate: { id: 'listing_pagination',
+                                                              itemsPerPage: 2,
+                                                              currentPage: page,
+                                                              totalItems: totalLines }">
+      <div *ngFor="let shop of shops | slice:(i*itemsPerRow):(i+1)*itemsPerRow">
+        <div [class]="shopViewClass">
+          <a href="#" [routerLink]="['/shops', shop.shop_id]">
+            <h3>{{shop.name}}</h3>
+            <img src="{{shop.logo}}" alt="Image introuvable">
+            <div class="shop-description"><p>{{shop.description | truncate}}</p></div>
+          </a>
+        </div> 
+      </div>
+    </div>
+    <br><br>
+    <div class="text-center" *ngIf="totalLines > 2">
+      <pagination-controls  class="pager" id="listing_pagination" 
+                            directionLinks="true"
+                            previousLabel="Précédent"
+                            nextLabel="Suivant"
+                            (pageChange)="onPageChange($event)">
+      </pagination-controls>
+    </div>
+  </div>
+</div>

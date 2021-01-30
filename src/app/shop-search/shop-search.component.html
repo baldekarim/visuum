@@ -1,0 +1,43 @@
+<div class="container">
+  
+  <div class="hidden-xs hidden-sm hidden-md">
+    <div class="row categories-menu" *ngFor="let ts of typesOfShops">
+      <ul class="nav nav-pills categories-names" >  
+        <li role="presentation">
+          <a href="#" [routerLink]="['/shops/search']" [queryParams]="{category: ts.id}">
+            {{ts.name}}
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="jumbotron jumbotron-fluid">
+    <form class="form-inline" #searchForm="ngForm" role="search" (ngSubmit)="filterShops(searchForm.value)">
+      <div class="row">
+        <div class="input-icone col-sm-12 col-md-3 col-lg-3">
+          <select ngModel name="shop_type" value="2">
+            <option selected value="0">Tout type de boutique</option>
+            <option *ngFor="let ts of typesOfShops" [value]="ts.id">{{ts.name}}</option>
+          </select> 
+        </div>
+        <div class="input-icone col-sm-12 col-md-6 col-lg-5">
+          <i class="fa fa-search fa-lg fa-fw" aria-hidden="true"></i>
+          <input ngModel name="shop_name" type="text" placeholder="Quelle boutique cherchez-vous ?">
+        </div>
+        <div class="input-icone col-sm-12 col-md-3 col-lg-4">
+          <i class="fa fa-map-marker fa-lg fa-fw" aria-hidden="true"></i>
+          <input ngModel name="location" type="text" placeholder="Saisissez une ville ou une commune">
+        </div>
+      </div>
+      <div class="row">
+        <button type="submit" class="search-button">Rechercher</button>
+      </div>
+    </form>
+  </div>
+
+</div>
+
+<div *ngIf="displaySearchText" class="container">
+  <h3>{{searchText}}</h3>
+</div>

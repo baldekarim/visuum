@@ -1,0 +1,48 @@
+.page-header {
+    height: 40px;
+    width: 100%;
+}
+
+.page-header a {
+    color: inherit;
+    text-decoration:none;
+}
+
+#search-top-page {
+    display: inline;
+    float: left;
+    width:33%;
+    text-align: left;
+}
+
+#title-top-page {
+    display: inline;
+    float: left;
+    width:34%;
+    text-align: center;
+    font-size: x-large;
+}
+
+#connection-button {
+    display: inline;
+    float: left;
+    width:33%;
+    text-align: right;
+    font-size: medium;
+}
+
+.navbar-nav {
+    font-weight: bold;
+}
+
+.navbar-nav:hover {
+    text-decoration: underline;
+}
+
+#navbar {
+    background-color: #ffb570;    
+}
+
+.navbar-default {
+    margin-bottom: 0px;
+}

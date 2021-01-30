@@ -1,0 +1,85 @@
+h1 {
+    text-align: center;
+    font-weight: bold;
+    color:#343A40;
+}
+
+/* Carousel base class */
+.carousel {
+    height: 400px;
+    margin-bottom: 60px;
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+    z-index: 10;
+}
+
+/* Declare heights because of positioning of img element */
+.carousel .item {
+    height: 400px;
+    background-color: #777;
+}
+
+.carousel-inner > .item > img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    height: 400px;
+}
+
+#myCarousel {
+    margin-bottom: 20px;
+}
+
+.addr {
+    display: inline;
+}
+
+#icone {
+    float: left;
+}
+
+#coord-data {
+    margin-left: 30px;
+}
+
+#bloc {
+    margin-bottom: 10px;
+}
+
+.fa-facebook-square {
+    color: #3b5998;
+    background-image: linear-gradient( to bottom, transparent 20%, white 20%, white 93%, transparent 93% );
+    background-size: 55%;
+    background-position: 70% 0;
+    background-repeat: no-repeat;
+    margin-top: 20px;
+}
+
+.shop-info {
+    margin-bottom: 50px;
+}
+
+p, a {
+    font-family: Helvetica, Impact, "Arial Black", Arial, Verdana, sans-serif;
+    font-size: 20px;
+}
+
+h2 {
+    font-size: 40px;
+    font-weight: bold;
+    color:#ffb570;
+}
+
+@media(max-width: 480px) {
+    #contact {
+        margin-top: 85px;
+    }
+}
+
+@media(min-width: 485px) and (max-width: 768px) {
+    #contact {
+        margin-top: 100px;
+    }
+}

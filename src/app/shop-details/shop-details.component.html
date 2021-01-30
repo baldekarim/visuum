@@ -1,0 +1,79 @@
+<div *ngIf="shopDetails">
+  <div class="container">
+    <div><h1>{{shopName}}</h1></div>
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li *ngFor="let ip of imagesPath let i = index" data-target="#myCarousel" [ngClass]="{'active': i == 0 }"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <div class="item" *ngFor= "let ip of imagesPath let i = index" [ngClass]="{'active': i == 0 }">
+          <img class="first-slide" [src]="ip" alt="First slide">
+        </div>
+      </div>
+      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+    <hr>
+  </div>
+
+  <div class="container shop-info">
+    
+    <div class="row">
+      <div>
+        <h2>Coordonnées</h2>
+      </div>
+      <div class="col-sm-12 col-lg-6">
+        <div *ngIf="shopAddress || shopPrefecture" id="bloc">
+          <div id="icone"><i class="fa fa-map-marker fa-lg"></i></div>
+          <div id="coord-data">
+            <div><p>{{shopAddress}}</p></div>
+            <div><p>{{shopPrefecture}}</p></div>
+          </div>
+        </div>
+        <div *ngIf="shopWebSite" id="bloc">
+          <div  id="icone"><i class="fa fa-globe fa-lg"></i></div>
+          <div id="coord-data"><a href="{{shopWebSite}}" target="_blank">{{shopWebSite}}</a></div>
+        </div>
+        <div *ngIf="shopFbPage" id="bloc">
+          <div id="icone"><a href="{{shopDetails.fbk_page}}" target="_blank"><i class="fa fa-facebook-square fa-3x" aria-hidden="true"></i></a></div>
+        </div>
+      </div>
+      <div id="contact" class="col-sm-12 col-lg-6">
+        <div id="bloc">
+          <div id="icone"><i class="fa fa-mobile fa-2x"></i></div>
+          <div id="coord-data">
+            <div *ngFor="let shopPhone of shopPhones"><p>{{ shopPhone.phone_number }}</p></div>
+          </div>
+        </div>
+        <div id="bloc">
+          <div id="icone"><i class="fa fa-envelope fa-lg"></i></div>
+          <div id="coord-data">
+            <div><p>{{shopMail}}</p></div>
+          </div>
+        </div>   
+      </div>
+    </div>
+    
+    <hr>
+    <div class="row">
+      <div><h2>Description</h2></div>
+      <div><p>{{shopDetails.description}}</p></div>
+    </div>
+
+    <hr>
+    <div class="row">
+      <div><h2>Horaires d'ouvertures</h2></div>
+      <div *ngIf="shopDetails.opening_hours"><p>{{shopDetails.opening_hours}}</p></div>
+      <div *ngIf="!shopDetails.opening_hours"><p>Non renseigné</p></div>
+    </div>
+  </div>
+
+</div>
+
+
