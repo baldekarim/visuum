@@ -1,48 +1,197 @@
-.page-header {
-    height: 40px;
+/*=============== Bar menu-recherche ===============*/
+
+.control-bar {
+    background: #ffb570;
+    color: #fff;
+    clear: both;
+}
+
+.control-bar .logo-visuum {
+    margin: 0px;
+    background : #000;
+    padding: 0px;
+}
+
+.control-bar a {
+    color:#fff
+}
+
+.control-bar .control-collapse {
+    clear: both;
     width: 100%;
+    padding: 0 15px 20px;
 }
 
-.page-header a {
-    color: inherit;
-    text-decoration:none;
+.control-bar .icon-bar {
+    background: #fff;
 }
 
-#search-top-page {
-    display: inline;
-    float: left;
-    width:33%;
-    text-align: left;
+.indicator:hover, .indicator.active {
+    background : #FBC68B;
 }
 
-#title-top-page {
-    display: inline;
-    float: left;
-    width:34%;
-    text-align: center;
-    font-size: x-large;
+.control-bar .indicator {
+    cursor:pointer;
+    padding: 20px 0;
+    border-bottom: 5px solid transparent;
 }
 
-#connection-button {
-    display: inline;
-    float: left;
-    width:33%;
-    text-align: right;
-    font-size: medium;
+.indicator a {
+    font-size: 18px;
 }
 
-.navbar-nav {
-    font-weight: bold;
+.control-bar .input-group {
+    padding-top: 10px;
 }
 
-.navbar-nav:hover {
-    text-decoration: underline;
+.icon-link a {
+    padding: 10px 0;
+    display: block;
 }
 
-#navbar {
-    background-color: #ffb570;    
+/* how it looks on larger viewports*/
+@media (min-width:768px) {  
+    .control-bar .control-collapse {
+        display: inline!important;
+        padding: 0;
+    }
+    .indicator {
+        height: 35px;
+        padding: 10px 0 0 0;
+        display: table;
+    }
+    .indicator span {
+        display: table-row;
+        text-align: center;
+        border: 1px solid red;
+        vertical-align: middle;
+
+    }
+    .indicator .title {
+        font-size: 15px;
+        font-weight: bold;
+       /* text-transform: uppercase;*/
+    }
+  
+    .indicator .notice {
+        font-size: 12px
+    }
+    /* height of parent minus by height of element divided by 2 */
+    .control-bar .input-group {
+        margin-top: 7px
+    }
+    .btn-default:hover {
+    background : #FBC68B
+}
+    .icon-link {
+        text-align: right;
+        padding-top: 28px;
+    }
+    .nav-link {
+        text-decoration: none !important;
+    }
+} 
+/*=============== //Bar menu-recherche ===============*/
+
+/*=============== //Footer ===============*/
+.page-footer{
+  margin-bottom: 0px;
+  padding: 5px 0px 5px;
+}
+.footer-copyright{
+	     background: #000000;
+	     color: #FFFFFF;
+       font-size: 12px;
+       margin-top: 3px;
+       padding: 5px 0px 5px;
+}
+.site-visuum{
+       color: #F1880B;
+}
+.footer_Adresse{
+	background: #000000;
+	color: #FFFFFF;
+  padding: 0px 0px 0px;
+   font-size: 11px;
 }
 
-.navbar-default {
-    margin-bottom: 0px;
+
+.footer_Adresse .text-uppercase{
+  margin-bottom: 0em;
+  font-size: 12px;
 }
+
+.page-footer .text-uppercase{
+  color: #ffb570;
+}
+
+.social {
+    margin: 0;
+    padding: 0;
+}
+
+.social ul {
+    margin: 0;
+    padding: 5px;
+}
+
+.social ul li {
+    margin: 5px;
+    list-style: none;
+    display: inline-block;
+}
+.adress-visuum {
+    list-style: none;
+    display: inline-block;
+}
+.serviceclient ul li {
+    list-style: none outside none;
+    display: inline-block;
+}
+.social i {
+    width: 40px;
+    height: 40px;
+    color: #FFF;
+    background-color: #909AA0;
+    font-size: 22px;
+    text-align:center;
+    padding-top: 12px;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -o-border-radius: 50%;
+    transition: all ease 0.3s;
+    -moz-transition: all ease 0.3s;
+    -webkit-transition: all ease 0.3s;
+    -o-transition: all ease 0.3s;
+    -ms-transition: all ease 0.3s;
+}
+
+
+.social .fa-facebook { /* round facebook icon*/
+    background: #4060A5;
+}
+.social .fa-twitter { /* round twitter icon*/
+    background: #00ABE3;
+}
+.social .fa-linkedin { /* round linkedin icon*/
+    background: #0094BC;
+}
+.social .fa-instagram { /* round instagram icon*/
+    background: #375989;
+}
+.social .fa-youtube { /* round youtube icon*/
+    background: #FF1F25;
+}
+.social .fa-google { /* round pinterest icon*/
+    background: #dd4b39;
+}
+
+.souligne{
+  text-decoration: underline;
+  padding: 0px 0px 0px 50px;
+}
+/*=============== //Footer ===============*/
+
+
+

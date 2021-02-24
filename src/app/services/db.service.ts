@@ -30,8 +30,40 @@ export class DbService {
    * Permet de récupérer une boutique en fonction de son identifiant
    * @param id Identifiant de la boutique
    */
-  getShopById(id) {
-    return this.http.get(this.base_url + `/api/shops/${id}`)
+  getShopByName(name) {
+    return this.http.get(this.base_url + `/api/shops/${name}`)
+                    .map(res => res.json())
+  }
+
+  /**
+   * Permet de se connecter à une API qui affiche en temps réel les taux de changes 
+   */
+  getEurGnfExchangeRate() {
+    return this.http.get(this.base_url + `/api/exchange-rate`)
+                    .map(res => res.json())
+  }
+
+  /**
+   * Récupère l'ensemble des points de retraits disponibles
+   */
+  getWithdrawals() {
+    return this.http.get(this.base_url + `/api/withdrawals`)
+                    .map(res => res.json())
+  }
+
+  /**
+   * Permet de récupérer l'ensemble des pays du monde
+   */
+  getCountries() {
+    return this.http.get('../data/countries.json')
+                    .map(res => res.json())
+  }
+
+  /**
+   * Récupère l'ensemble des e-mails présents dans la base de données
+   */
+  getEmails() {
+    return this.http.get(this.base_url + '/api/emails')
                     .map(res => res.json())
   }
 

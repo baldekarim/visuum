@@ -18,6 +18,7 @@ const { request } = require('express');
 
 // File System pour parcourir l'ensemble des fichiers d'un répertoire
 const fs = require('fs');
+const { count } = require('rxjs/operator/count');
 
 /**
  * Avant de se connecter, exécuter la commande suivante sur la console mysql pour configurer l'authentification de l'utilisateur root
@@ -29,6 +30,9 @@ var connection = mysql.createConnection({
     password : '@toDbm20!',
     database : 'visuum_db'
   });
+
+const projectBasePath = '/home/karim/code/node'
+const imgSrcFolder = '/visuum/src/assets/images/shops'
    
 connection.connect(function(err) {
     if (err) {
@@ -56,14 +60,13 @@ api.get('/shops', (req, res) => {
 /**
  * Boutique en fontion d'un id
  */
-api.get('/shops/:id', (req, res) => {
-    let request = `SELECT * FROM shop WHERE shop_id = ${connection.escape(req.params.id)};`
+api.get('/shops/:name', (req, res) => {
+    let request = `SELECT * FROM shop WHERE name = ${connection.escape(req.params.name)};`
     connection.query(request, (err, result, fields) => {
         if(err) throw err;
         if(result.length  === 1) {
             shop_found = result[0]
-
-            fs.readdir('/home/karim/code/node/visuum' + shop_found.pictures, (errf, files) => {
+            fs.readdir(projectBasePath + imgSrcFolder + shop_found.pictures, (errf, files) => {
                 if(errf) return console.error(errf);
                 images_path = files.join('|||')
                 res.json({ success: true, shop_found, images_path});
@@ -83,16 +86,16 @@ api.get('/search', (req, res) => {
     let name = ''
     let location = ''
 
-    if(req.query.category) {
-        category = connection.escape(parseInt(req.query.category))
+    if(req.query.categorie) {
+        category = connection.escape(parseInt(req.query.categorie))
     }
 
-    if(req.query.name) {
-        name = connection.escape(req.query.name)
+    if(req.query.nom) {
+        name = connection.escape(req.query.nom)
     }
 
-    if(req.query.location) {
-        location = connection.escape(req.query.location)
+    if(req.query.localisation) {
+        location = connection.escape(req.query.localisation)
     }
 
     if(isNaN(category)) throw `Le paramètre '${req.query.category}' doit être un nombre`
@@ -133,6 +136,35 @@ api.get('/search', (req, res) => {
         }
     })
 
+})
+
+/**
+ * Renvoie l'ensemble des emails des utilisateurs
+ */
+ api.get('/emails', (req, res) => {
+     let request = 'SELECT email FROM user;'
+     connection.query(request, (err, result) => {
+         if (err) throw err
+         res.json({ success: true, emails_list: result})
+     })
+ })
+
+ /**
+  * Renvoie le taux de change utilisé pour la conversion EURO - GNF
+  */
+api.get('/exchange-rate', (req, res) => {
+    res.json({ success: true, exchange_rate: 12000})
+})
+
+/**
+ * Renvoie l'ensemble des points de retraits
+ */
+api.get('/withdrawals', (req, res) => {
+    let request = 'SELECT * FROM withdrawal;'
+    connection.query(request, (err, result) => {
+        if (err) throw err
+        res.json({ success:true, withdrawals: result })
+    })
 })
 
 app.use('/api', api)

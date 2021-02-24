@@ -1,0 +1,80 @@
+.animate {
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+/*=============== carousel-image ===============*/
+.d-block {
+    width: 100%;
+    height: 238px;
+}
+.d-block img{
+    width: 100%;
+    height: 238px;
+}
+/*=============== //carousel-image ===============*/
+
+/*=============== Products ===============*/
+.produit {
+    padding: 15px 0 5px;
+    background: #F0EEEB;
+    width: 100%;
+    height: auto;
+}
+
+.produit h2 {
+    font-weight: normal;
+}
+
+.produit .common-produit {
+    background-color: #fff;
+    border-radius:15px;
+    margin: 0 0 5px;
+}
+
+.produit .common-produit figure {
+    overflow: hidden;
+    width: 100%;
+    height: auto;
+    border-radius:15px;
+}
+
+.produit img {
+    width: 100%;
+    height: auto;
+}
+
+.produit .common-produit h5 {
+    margin: 0 0 0px;
+    font-size: 10px;
+    font-weight: 700;
+    color: #3a3c41;
+}
+
+.produit .common-produit .text-content {
+    padding: 5px 15px 5px 15px;
+}
+
+.produit .common-produit h5 small {
+    color: #000000;
+    font-weight: bold;
+    font-size: 0.8em;
+}
+
+.produit .common-produit h5 small strong {
+    text-decoration: underline;
+}
+
+.produit .prix_v_montant {
+    color: #F1880B;
+}
+
+.produit .common-produit .text-uppercase {
+    text-align: center;
+    margin: 0 0 5px;
+}
+
+/*=============== // Products ===============*/

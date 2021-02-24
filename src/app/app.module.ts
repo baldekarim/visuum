@@ -15,13 +15,20 @@ import { TruncatePipe } from './pipes/truncate.pipe';
 import { ShopSearchComponent } from './shop-search/shop-search.component';
 import { ShopSearchResultComponent } from './shop-search-result/shop-search-result.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { VoucherComponent } from './voucher/voucher.component';
+import { AmountConverterPipe } from './pipes/amount-converter.pipe';
+import { AuthenticationComponent } from './authentication/authentication.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes = [
   { path: '', component: HomeComponent},
-  { path: 'shops/search', component: ShopComponent},
-  { path: 'shops/:id', component: ShopDetailsComponent},
-  { path: 'shops', component: ShopComponent},
-  { path: '**', component: PageNotFoundComponent },
+  { path: 'boutiques/recherche', component: ShopComponent},
+  { path: 'boutiques/:name', component: ShopDetailsComponent},
+  { path: 'boutiques', component: ShopComponent},
+  { path: 'bons-achat', component: VoucherComponent},
+  { path: 'connexion', component: AuthenticationComponent},
+  { path: 'inscription', component: RegisterComponent},
+  { path: '**', component: PageNotFoundComponent }
 ]
 
 @NgModule({
@@ -33,7 +40,11 @@ const routes = [
     TruncatePipe,
     ShopSearchComponent,
     ShopSearchResultComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    VoucherComponent,
+    AmountConverterPipe,
+    AuthenticationComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

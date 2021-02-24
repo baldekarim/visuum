@@ -1,17 +1,16 @@
-<div class="container">
-  
-  <div class="hidden-xs hidden-sm hidden-md">
-    <div class="row categories-menu" *ngFor="let ts of typesOfShops">
-      <ul class="nav nav-pills categories-names" >  
-        <li role="presentation">
-          <a href="#" [routerLink]="['/shops/search']" [queryParams]="{category: ts.id}">
+<nav class="navbar navbar-default">
+    <div id="navbar" class="hidden-xs hidden-sm hidden-md">
+      <ul class="nav nav-pills cat-menu" *ngFor="let ts of typesOfShops">
+        <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" >
+          <a href="#" [routerLink]="['/boutiques/recherche']" [queryParams]="{category: ts.id}">
             {{ts.name}}
           </a>
         </li>
       </ul>
     </div>
-  </div>
+</nav>
 
+<div class="container">
   <div class="jumbotron jumbotron-fluid">
     <form class="form-inline" #searchForm="ngForm" role="search" (ngSubmit)="filterShops(searchForm.value)">
       <div class="row">

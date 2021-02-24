@@ -34,7 +34,7 @@ export class ShopSearchComponent implements OnInit {
   }
 
   filterShops(value) {
-    let urlPath = '/shops/search?'
+    let urlPath = '/boutiques/recherche?'
     let categoryTerm = ''
     let nameTerm = ''
     let locationTerm = ''
@@ -42,13 +42,13 @@ export class ShopSearchComponent implements OnInit {
     
 
     if(value.shop_type) {
-     categoryTerm = 'category=' + value.shop_type
+     categoryTerm = 'categorie=' + value.shop_type
     }
     if(value.shop_name) {
-      nameTerm = 'name=' + value.shop_name
+      nameTerm = 'nom=' + value.shop_name
     }
     if(value.location) {
-      locationTerm = 'location=' + value.location
+      locationTerm = 'localisation=' + value.location
     }
 
     urlPath +=  [categoryTerm, nameTerm, locationTerm].filter(Boolean).join('&')
@@ -57,10 +57,11 @@ export class ShopSearchComponent implements OnInit {
   }
   
   private filterShopsOnModifyingUrl() {
-    let category = this.activatedRoute.snapshot.queryParams.category
-    const name = this.activatedRoute.snapshot.queryParams.name
-    const location = this.activatedRoute.snapshot.queryParams.location
+    let category = this.activatedRoute.snapshot.queryParams.categorie
+    const name = this.activatedRoute.snapshot.queryParams.nom
+    const location = this.activatedRoute.snapshot.queryParams.localisation
 
+    console.log('catégorie : ', category)
     if(!category) {
       category = 0
     } else {
@@ -71,14 +72,14 @@ export class ShopSearchComponent implements OnInit {
       }
     }
 
-    let urlArgs = 'category=' + category
+    let urlArgs = 'categorie=' + category
     
     if(name) {
-      urlArgs += '&name=' + name
+      urlArgs += '&nom=' + name
       this.nameText = ' << ' + name + ' >>'
     }
     if(location) {
-      urlArgs += '&location=' + location
+      urlArgs += '&localisation=' + location
       this.locationText = ' à ' + location
     }
 

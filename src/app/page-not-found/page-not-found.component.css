@@ -6,6 +6,7 @@ h1, h2 {
 h1 {
     font-size: 80px;
     margin-top: 50px;
+    z-index: -1;
 }
 
 h2 {

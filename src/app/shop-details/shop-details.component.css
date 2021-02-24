@@ -1,3 +1,11 @@
+.animate {
+    -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
 h1 {
     text-align: center;
     font-weight: bold;
@@ -58,7 +66,7 @@ h1 {
 }
 
 .shop-info {
-    margin-bottom: 50px;
+    margin: 50px 10px 20px 150px;
 }
 
 p, a {
@@ -70,6 +78,10 @@ h2 {
     font-size: 40px;
     font-weight: bold;
     color:#ffb570;
+}
+
+p {
+    margin-right: 30px;
 }
 
 @media(max-width: 480px) {

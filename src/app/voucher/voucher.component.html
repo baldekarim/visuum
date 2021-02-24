@@ -1,0 +1,48 @@
+<div class="container_fluid select-voucher">
+
+  <div class="title-voucher"><h3>Envoyer de l'argent en Guinée en seulement quelques clics</h3><hr></div>
+  
+  <div class="col-sm-12 col-md-4 col-lg-3"><img src="/src/assets/images/transfert.png" alt="Image introuvable"></div>
+  
+  <div class="select-options col-sm-12 col-md-8 col-lg-5">
+    <div><h3>Bon d'achat - transfert d'argent</h3></div>
+    <div><p>Taux de change : <span>1 € = {{exchangeRateView}} GNF</span><p></div>
+    <hr>
+    <div><p>Saisir dans la case ou utiliser les flèches pour sélectionner la quantité que vous souhaitez envoyer</p></div>
+    <div id="select-quantity">
+      <div class="input-group spinner">
+        <input type="text" class="form-control" [value]="quantitySetByUser" [(ngModel)]="quantitySetByUser" (change)="updateQuantity()">
+        <div class="input-group-btn-vertical">
+          <button class="btn btn-default" type="button" (click)=increment()><i class="fa fa-caret-up"></i></button>
+          <button class="btn btn-default" type="button" (click)=decrement()><i class="fa fa-caret-down"></i></button>
+        </div>
+      </div>
+    </div>
+    <div><p>Total : <strong>{{amount  |  amountConverter}} €</strong></p></div>
+    <div class="withdrawal"><p>Sélectionner un point de retrait</p></div>
+    <div>
+      <select name="withdrawal" (change)="updateSelectedWithdrawal($event.target.value)">
+        <option *ngFor="let wp of withdrawalsPlace" [value]="wp.withdrawal_id">{{wp.name}}</option>
+      </select>
+    </div>
+  </div>
+
+  <div *ngIf="displaySummary" class="frame col-xs-12 col-sm-12 col-md-12 col-lg-4">
+    <div><h2>Récapitulatif</h2></div>
+    <div>
+      <div class="column-label"><p>Somme à envoyer</p></div>
+      <div class="column-value"><p>{{amount  |  amountConverter}} €</p></div>
+      <div class="column-label recipient"><p>Votre bénéficiaire recevra</p></div>
+      <div class="column-value recipient"><p>{{amountGnfView}} GNF</p></div>
+      <div class="column-label"><p>Expédition</p></div>
+      <div class="column-value"><p>{{shipmentView}} €</p></div>
+      <div class="column-label"><p>Total</p></div>
+      <div class="column-value"><p>{{totalAmountView}} €</p></div>
+    </div>
+    <div><button (click)="validateOrder()">Passer la commande</button></div>
+  </div>
+  
+  <div class="col-lg-12"><hr></div>
+
+</div>
+

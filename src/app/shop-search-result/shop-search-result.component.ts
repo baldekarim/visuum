@@ -19,7 +19,11 @@ export class ShopSearchResultComponent implements OnInit {
   noneResultMessage = ''
 
   shopViewClass = ''
-  // shopViewClass = 'col-lg-12 shop_item'
+
+  paginationClass = 'pager'
+  prevLabel = 'Précédent'
+  nextLabel = 'Suivant'
+  maxSize = 7
 
   constructor(private dbService: DbService) { }
 
@@ -30,7 +34,7 @@ export class ShopSearchResultComponent implements OnInit {
           this.totalLines = 0
           this.handleSearchResult(data)
         }
-      ); 
+      );
   }
 
   handleSearchResult(data) {
@@ -55,6 +59,15 @@ export class ShopSearchResultComponent implements OnInit {
     } else {
       this.shopViewClass = 'col-sm-12 col-md-6 col-lg-4 shop_item'
     }
+
+    if (window.innerWidth < 768) {
+      this.maxSize = 5
+      this.prevLabel = ''
+      this.nextLabel = ''
+      if (window.innerWidth < 520) {
+        this.paginationClass = 'pagination pagination-sm'
+      }
+    } 
   }
 
   onPageChange(p: number) {

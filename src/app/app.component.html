@@ -1,42 +1,134 @@
-<div class="page-header">
-    <div id="search-top-page"><input type="text" class="form-control" placeholder="Rechercher"></div>
-    <div id="title-top-page"><a href="#" routerLink="/">{{title}}</a></div>
-    <div id="connection-button">
-      <a class="top-page" href="#" routerLink="/login">
-        <span class="oi oi-person" title="Connexion" aria-hidden="true"> Connexion</span>
-      </a>
+<!--Bar menu-recherche-->
+<div class="control-bar container-fluid navbar-fixed-top">
+  
+  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".control-collapse">
+    <span class="sr-only">Toggle navigation</span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>  
+  
+  <div class="collapse control-collapse">
+     <div class="row">
+
+      <div class="col-sm-1 col-sm-offset-1 logo-visuum active">
+        <a href="#">
+          <img class="img-responsive" src="../src/assets/images/logo_visuum.png" alt="Logo">
+        </a>
+      </div>
+
+      <!--/.col-*-3 -->
+      <div class="col-sm-4">
+        <!--/.col-*-4 :: nested -->
+        <div class="col-sm-2 indicator">
+          <span class="title"><a class="nav-link" href="#" routerLink="/boutiques">Boutiques</a></span>
+        </div>
+        <!--/.col-*-4.indicator :: nested -->
+        <div class="col-sm-3 indicator">
+          <span class="title"><a class="nav-link" href="#" routerLink="/entreprises">Entreprises</a></span>
+        </div>
+        <!--/.col-*-4.indicator :: nested -->
+        <div class="col-sm-3 indicator">
+          <span class="title"><a class="nav-link" href="#" routerLink="/stages-emplois">Stages / Emplois</a></span>
+        </div>
+        <!--/.col-*-4.indicator :: nested -->
+        <div class="col-sm-4 indicator">
+          <span class="title"><a class="nav-link" href="#" routerLink="/a-propos">À propos</a></span>
+          <!-- <span class="number">1</span>-->
+        </div>
+        <!--/.col-*-4.indicator :: nested -->
+      </div>
+      
+      <!--/.col-*-7 -->
+      <div class="col-sm-5">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Recherche ...">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+          </span>
+        </div>
+        <!-- /input-group -->
+      </div>
+      
+      <!--/.col-*-3 -->
+      <div class="col-sm-2">
+        <div class="row">
+          <div class="col-sm-6 indicator">
+            <span class="title"><a id="dLabel" class="nav-link" href="#" routerLink="/connexion">Mon compte<span class="caret"></span></a></span>
+            <!-- <span class="number">1</span>-->
+          </div>
+          <!--/.col-*-4.indicator :: nested -->
+          <div class="col-sm-6 indicator">
+            <span class="title"><a class="nav-link" href="#" routerLink="/bons-achat">Bons d'achat</a></span>
+          </div>
+        <!-- /.col-*-4.indicator :: nested -->
+        </div>
+        <!--/.row (nested) -->
+      </div>
+      
+      <!--/.col-*-7 -->
     </div>
+    <!--/.row -->
+  </div>
+  <!--/.nav-collapse -->
+</div>
+<!--/control-bar.container-fluid -->
+
+<!-- // Bar menu-recherche-->
+
+<div role="main">
+  <router-outlet></router-outlet>
 </div>
 
-<nav class="navbar navbar-default">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-    </div>
-    <div id="navbar" class="collapse navbar-collapse">
-      <ul class="nav navbar-nav">
-        <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" >
-          <a href="#" routerLink="/companies">ENTREPRISES</a>
-        </li>
-        <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-          <a href="#" routerLink="/shops">BOUTIQUES</a>
-        </li>
-        <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-          <a href="#" routerLink="/vouchers">BONS D'ACHAT</a>
-        </li>
-        <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-          <a href="#" routerLink="/jobs">STAGE/EMPLOI</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
-
-<router-outlet></router-outlet>
+<!-- Footer -->
+<footer class="page-footer font-small teal pt-4">
+ <div class="container-fluid text-md-left">
+     <div class="row footer_Adresse">
+           <div class="col-md-3 mb-md-0 mb-3 serviceclient">
+           <h5 class="text-uppercase font-weight-bold text-center souligne p-2"><strong>Service client</strong></h5>
+         <ul class="text-center">
+           <li class="text-center">
+             <span class="glyphicon glyphicon-phone-alt"></span> : (0033) 01 00 00 00 00 / 07 00 00 00 00<br>
+             <span class="glyphicon glyphicon-phone-alt"></span> : (0033) 01 00 00 00 00 / 07 00 00 00 00<br>
+             <span class="glyphicon glyphicon-globe"></span> : serviceclientvisuum@gmail.com
+           </li>
+         </ul>
+       </div>
+         
+       <div class="col-md-3 mb-md-0 mb-3 text-center social">
+         <h5 class="text-uppercase font-weight-bold souligne p-2"><strong>Suivez-nous</strong></h5>
+         <ul class="text-center ">
+             <li><a href="#"><i class="fa fa-lg fa-facebook"></i></a></li>
+             <li><a href="#"><i class="fa fa-lg fa-twitter"></i></a></li>
+             <li><a href="#"><i class="fa fa-lg fa-linkedin"></i></a></li>
+             <li><a href="#"><i class="fa fa-lg fa-instagram"></i></a></li>
+             <li><a href="#"><i class="fa fa-lg fa-youtube"></i></a></li>
+            
+         </ul>
+     </div>
+     
+     <div class="col-md-3 mt-md-0 mt-3 text-center">
+       <h5 class="text-uppercase font-weight-bold souligne p-2"><strong>VISUUM FRANCE</strong></h5>
+         <ul class="text-center adress-visuum">
+         <li><span class="glyphicon glyphicon-map-marker"></span> : 15 rue Henry Barbusse 94450 Limeil Brevannes</li>
+         <li><span class="glyphicon glyphicon-phone-alt"></span> : (0033) 01 00 00 00 00 / 07 00 00 00 00</li>
+         <li><span class="glyphicon glyphicon-globe"></span> : contactvisuum@gmail.com</li>
+       </ul>
+     </div>
+     <div class="col-md-3 mt-md-0 mt-3 text-center">
+       <h5 class="text-uppercase font-weight-bold souligne p-2"><strong>VISUUM GUINEE</strong></h5>
+       <ul class="text-center adress-visuum">
+         <li><span class="glyphicon glyphicon-map-marker"></span> : Bembeto, Commune de Ratoma, Conakry - Guinée</li>
+         <li><span class="glyphicon glyphicon-phone-alt"></span> : (0033) 01 00 00 00 00 / 07 00 00 00 00</li>
+         <li><span class="glyphicon glyphicon-globe"></span> : contactvisuum@gmail.com</li>
+     </ul>
+     </div>
+   </div>
+</div>
+ <!-- Copyright -->
+ <div class="footer-copyright text-center p-2">Conditions d'utilisation © 2020 Copyright :
+   <a class="site-visuum" href="#"> visuum.com</a>
+ </div>
+ <!-- Copyright -->
+</footer>
+<!-- Footer -->

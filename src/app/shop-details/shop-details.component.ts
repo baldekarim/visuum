@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DbService } from '../services/db.service';
 
 @Component({
@@ -23,20 +23,26 @@ export class ShopDetailsComponent implements OnInit {
   shopDescription = ''
   shopOpeningHours = ''
   imagesPath = []
+  imgSrcFolder = 'src/assets/images/shops'
 
-  constructor(private dbService: DbService, private activatedRoute: ActivatedRoute) { }
+  constructor(private dbService: DbService, private activatedRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-    const id = this.activatedRoute.snapshot.params.id;
-    this.dbService.getShopById(id)
+    window.scrollTo(0, 0);
+    const name = this.activatedRoute.snapshot.params.name;
+    this.dbService.getShopByName(name)
                   .subscribe(
                     data => {
-                      this.shopDetails = data.shop_found;
-                      this.imagesPath = data.images_path.split('|||')
-                      this.loadShop(this.shopDetails)
+                      if (data.success) {
+                        this.shopDetails = data.shop_found;
+                        this.imagesPath = data.images_path.split('|||')
+                        this.loadShop(this.shopDetails)
+                      } else {
+                        console.log('error : ', data.message)
+                        this.router.navigate(['page-inexistante'])
+                      }
                     },
                     error => {
-                      console.error('Error ', error.statusText);
                       this.error = error;
                       this.errorMessage = error.message;
                     }
@@ -70,7 +76,7 @@ export class ShopDetailsComponent implements OnInit {
     this.shopDescription = data.description
     this.shopOpeningHours = data.opening_hours
     let imgFolder = data.pictures
-    this.imagesPath = this.imagesPath.map(img => imgFolder + img)
+    this.imagesPath = this.imagesPath.map(img => this.imgSrcFolder + imgFolder + img)
   }
 
 }
