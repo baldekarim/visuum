@@ -1,0 +1,69 @@
+<div class="container">
+  <div id="invoice">
+    <div class="toolbar hidden-print">
+      <div class="text-right">
+        <button class="btn" (click)="makePdf()"><i class="fa fa-file-pdf-o"></i> Télécharger PDF</button>
+      </div>
+      <hr>
+    </div>
+    <div #content class="invoice content overflow-auto">
+      <div>
+        <header>
+          <div class="row">
+            <div class="col-sm-6">
+              <img src="/src/assets/images/logo_visuum.png" data-holder-rendered="true" />
+            </div>
+            <div class="col-sm-6 company-details">
+              <h2 class="name">{{userFirstName}} <strong>{{userLastName}}</strong></h2>
+              <div>{{userPhoneNumber}}</div>
+              <div>{{userEmail}}</div>
+            </div>
+          </div>
+        </header>
+        <main>
+          <div class="col invoice-details">
+            <h2>Récépissé transaction</h2>
+            <h3><strong>Date : </strong>{{transactionDate | date:'dd/MM/yyyy':'GMT':'fr-FR'}}</h3>
+            <h3><strong>Référence : </strong>{{transactionReference}}</h3>
+          </div>
+          <table cellspacing="0" cellpadding="0">
+            <thead>
+              <tr>
+                <th>DESCRIPTION</th><th>Montant</th><th>Montant GNF</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="text-left">Bon d'achat transfert d'argent</td>
+                <td class="unit">{{transactionAmount | amountConverter}} €</td>
+                <td class="total">{{amountGnf}} GNF</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr><td colspan="2">Expédition</td><td>{{shipping | amountConverter}} €</td></tr>
+              <tr><td colspan="2">Total</td><td>{{totalAmount | amountConverter}} €</td></tr>
+            </tfoot>
+          </table>
+          <div class="row contacts">
+            <div class="col invoice-to">
+              <div class="infos">
+                <h2>Bénéficiaire :</h2>
+                <h3><strong>Nom : </strong>{{recipientName}}</h3>
+                <h3><strong>Téléphone : </strong>{{recipientPhoneNumber}}</h3>
+              </div>
+              <div class="infos">
+                <h2>Point de retrait :</h2>
+                <h3 class="withdrawal-name">{{withdrawalName}}</h3>
+                <h3><strong>Téléphone : </strong>{{withdrawalPhoneNumber}}</h3>
+                <h3><strong>Gérant : </strong>{{withdrawalManager}}</h3>
+                <h3><strong>Email : </strong>{{withdrawalEmail}}</h3>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+        <!--DO NOT DELETE THIS div. IT is responsible for showing footer always at the bottom-->
+        <div></div>
+    </div>
+</div>
+</div>

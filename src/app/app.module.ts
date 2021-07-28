@@ -19,15 +19,28 @@ import { VoucherComponent } from './voucher/voucher.component';
 import { AmountConverterPipe } from './pipes/amount-converter.pipe';
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { RegisterComponent } from './register/register.component';
+import { ValidateUserRegistrationComponent } from './validate-user-registration/validate-user-registration.component';
+import { ProfileComponent } from './profile/profile.component';
+import { RecipientComponent } from './recipient/recipient.component';
+import { LoginActivate } from './LoginActivate';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { UpdateUserProfileComponent } from './update-user-profile/update-user-profile.component';
+import { TransactionReceiptComponent } from './transaction-receipt/transaction-receipt.component';
 
 const routes = [
   { path: '', component: HomeComponent},
   { path: 'boutiques/recherche', component: ShopComponent},
   { path: 'boutiques/:name', component: ShopDetailsComponent},
   { path: 'boutiques', component: ShopComponent},
-  { path: 'bons-achat', component: VoucherComponent},
+  { path: 'profil', component: ProfileComponent, canActivate: [LoginActivate]},
+  { path: 'profil/edition', component: UpdateUserProfileComponent, canActivate: [LoginActivate]},
   { path: 'connexion', component: AuthenticationComponent},
+  { path: 'bons-achat', component: VoucherComponent},
   { path: 'inscription', component: RegisterComponent},
+  { path: 'validation-utilisateur', component: ValidateUserRegistrationComponent},
+  { path: 'beneficiaire', component: RecipientComponent, canActivate: [LoginActivate]},
+  { path: 'validation-bons-d-achat', component: CheckoutComponent, canActivate: [LoginActivate]},
+  { path: 'recepisse/transaction/:reference', component: TransactionReceiptComponent, canActiviate: [LoginActivate]},
   { path: '**', component: PageNotFoundComponent }
 ]
 
@@ -44,7 +57,13 @@ const routes = [
     VoucherComponent,
     AmountConverterPipe,
     AuthenticationComponent,
-    RegisterComponent
+    RegisterComponent,
+    ValidateUserRegistrationComponent,
+    ProfileComponent,
+    RecipientComponent,
+    CheckoutComponent,
+    UpdateUserProfileComponent,
+    TransactionReceiptComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +73,7 @@ const routes = [
     HttpModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [DbService],
+  providers: [DbService, LoginActivate],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

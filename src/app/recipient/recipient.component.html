@@ -1,0 +1,38 @@
+<div class="container recipient-all">
+  <div class="btn-add">
+    <button class="btn" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+      Ajouter un nouveau bénéficiaire
+    </button>
+  </div>
+  <div class="collapse" id="collapseExample">
+    <div class="recipient-add">
+      <form [formGroup]="form" (ngSubmit)="addRecipient(form.value)">
+        <div class="form-group">
+          <label for="name">Nom</label>
+          <input type="text" class="form-control" name="name" id="name" placeholder="Nom et Prénom du bénéficiaire" formControlName="name" required>
+        </div>
+        <div class="form-group">
+          <label for="phone-number">Téléphone</label>
+          <input type="text" class="form-control" name="phone_number" id="phone-number" placeholder="Numéro de téléphone du bénéficiaire" formControlName="phone_number" required>
+        </div>
+        <button type="submit" [disabled]="!form.valid">Ajouter</button>
+      </form>
+    </div>
+  </div>
+
+  <div *ngIf="hasUserARecipient" class="recipient-list">
+    <h3>Séléctionner un bénéficiaire</h3>
+    <form #selectForm="ngForm" (ngSubmit)="validateRecipient(selectForm.value)">
+      <div>
+        <select name="recipient_selected" ngModel required>
+          <option *ngFor="let rec of recipientsList let i = index" [value]="rec.recipient_id" [selected]="i == lastElementIndex">
+            {{rec.name}} {{rec.phone_number}}</option>
+        </select>
+      </div>
+      <div class="row validate-recipient">
+        <button type="submit" [disabled]="!selectForm.valid">Valider ce bénéficiaire</button>
+      </div>
+  </form>
+  </div>
+
+</div>

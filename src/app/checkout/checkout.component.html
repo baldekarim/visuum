@@ -1,0 +1,13 @@
+<div class="container">
+  <div *ngIf="!transactionComplete" class="img-cont">
+    <h3>Paiement par carte bancaire</h3>
+    <p>Attention ce module n'est pas encore fonctionnelle il ne sert qu'à illustrer la future présentation</p>
+    <img src="/src/assets/images/test_paiement.png" alt="image introuvable">
+    <button (click)="createTransaction()">Continuer</button>
+  </div>
+
+  <div *ngIf="transactionComplete" class="transaction-complete">
+    <p>Merci d'avoir utilisé <span>Visuum</span> pour envoyer des bons d'achat à vos proches. <br/><br> La référence de votre transaction est 
+    <span>{{transactionReference}}</span>. Vous allez recevoir une confirmation par mail dans quelques secondes.</p>
+  </div>
+</div>

@@ -9,79 +9,64 @@ import { DbService } from '../services/db.service'
 })
 export class AuthenticationComponent implements OnInit {
 
-  validEmail = false
-  existingEmail = false
-  validUser = false
   errorMessage = ''
-
-  emailsList = []
+  vsmToken = null
+  displayAuthenticationForm = true
+  isPasswordForgotten = false
+  mailForNewPassword = false
 
   constructor(private router: Router, private dbService: DbService) { }
 
   ngOnInit() {
-    this.dbService.getEmails().subscribe(
-      data => {
-        this.emailsList = data.emails_list
-        console.log('Emails présents : ', this.emailsList)
-        console.log('loop : ')
-        this.emailsList.forEach(e => console.log(e.email))
-      }
-    )
+    if (this.dbService.isUserLoggedIn()) this.displayAuthenticationForm = false
+    else this.displayAuthenticationForm = true
   }
 
   actualizeErrorMessage() {
     this.errorMessage = ''
   }
 
-  isValidEmail(email) {
-    let regExp = new RegExp(/^([\w-\.]+)@((?:[\w]+\.)+)([a-zA-Z]{2,4})/i)
-    return regExp.test(email)
-  }
-
-  isExistingEmail(email) {
-    let emailFound = this.emailsList.find(el => el.email == email)
-    if (emailFound) {
-      this.existingEmail = true
-    } else {
-      this.existingEmail = false
-    }
-  }
-
-  checkPassword(email, password) {
-    // vérification de la correspondance email <-> password
-    email = 'abc@efg.hi'
-    password = '************'
-    return false
-  }
-
-  checkUserIdentification(email, password) {
-    this.validEmail = this.isValidEmail(email)
-    if (this.validEmail) {
-      this.isExistingEmail(email)
-      if (this.existingEmail) {
-        this.validUser = this.checkPassword(email, password)
-        if (this.validUser) {
-          this.router.navigate(['/profile'])
-        } else {
-          this.errorMessage = 'Mot de passe incorrect'
-        }
-      } else {
-        this.errorMessage = "Il n'existe pas de compte associé à cette adresse e-mail"
-      }
-    } else {
-      this.errorMessage = 'Adresse e-mail invalide'
-    }
-  }
-
   connection(data) {
-    console.log('email : ', data.username)
-    console.log('password : ', data.password)
+    this.dbService.connection(data).subscribe(
+      data => this.handleSuccess(data),
+      error => this.handleError(error)
+    )
+  }
 
-    this.checkUserIdentification(data.username, data.password)
-    
-    console.log('is valid email : ', this.validEmail)
-    console.log('is existing email : ', this.existingEmail)
-    console.log('is valid user : ', this.validUser)
+  handleSuccess(data) {
+    this.vsmToken = data
+    this.displayAuthenticationForm = false
+    localStorage.setItem('vsm-token', JSON.stringify(data))
+    if (this.dbService.redirectToRecipient) {
+      this.router.navigate(['/beneficiaire'])
+    } else this.router.navigate(['/profil'])
+  }
+
+  handleError(error) {
+    let requestStatus = error.status
+    if (requestStatus == 400) this.errorMessage = "Paramètre manquant" 
+    else if (requestStatus == 404) this.errorMessage = "Il n'existe pas de compte associé à cette adresse e-mail"
+    else if (requestStatus == 403) this.errorMessage = "Mot de passe incorrect"
+  }
+
+  passwordForgotten() {
+    this.isPasswordForgotten = true
+    this.displayAuthenticationForm = false
+  }
+
+  reinitializePassword(data) {
+    this.dbService.updateForgottenPassword(data).subscribe(
+      d => { 
+        console.log('result server data : ', d)
+        this.mailForNewPassword = true
+        this.isPasswordForgotten = false 
+      },
+      error => {
+        let serverErrorMessage = error.json().message
+        if (serverErrorMessage == 'email is not valid') this.errorMessage = 'Adresse mail invalide'
+        else if (serverErrorMessage == 'user not exist') this.errorMessage = "Cette adresse mail n'existe pas. Vous devez vous inscrire"
+      }
+    )
   }
 
 }

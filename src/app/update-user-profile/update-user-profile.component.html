@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="edition-form" *ngIf="! updateComplete">
+    <form #editionForm="ngForm" (ngSubmit)="updateUser(editionForm.value)">
+      <h2>Modifier votre {{setText}}</h2>
+      <div *ngIf="errorMessage" class="alert alert-danger"><a class="close" data-dismiss="alert" href="#">×</a>{{errorMessage}}</div>
+           
+      <div class="form-group" *ngIf="! setPassword">
+        <label for="country">Pays</label>
+        <select name="country" ngModel>
+          <option *ngFor="let ct of countries" [value]="ct">{{ct}}</option>
+        </select>
+      </div>      
+
+      <div class="form-group" *ngIf="! setPassword">
+        <label for="address">Adresse</label>
+        <input type="address" class="form-control" name="address" placeholder="(Numéro et nom de la voie)" ngModel>
+      </div>
+
+      <div class="form-group" *ngIf="! setPassword">
+        <label for="zip_code">Code Postal</label>
+        <input type="text" class="form-control" name="zip_code" placeholder="Code Postal" ngModel>
+      </div>
+      
+      <div class="form-group" *ngIf="! setPassword">
+        <label for="city">Ville</label>
+        <input type="text" class="form-control" name="city" placeholder="Ville" ngModel>
+      </div>
+
+      <div class="form-group" *ngIf="! setPassword">
+        <label for="phone_number">Numéro de téléphone</label>
+        <input type="text" class="form-control" name="phone_number" placeholder="Téléphone" ngModel>
+      </div>
+
+      <div class="form-group" *ngIf="setPassword">
+        <label for="old_password">Ancien mot de passe</label>
+        <input type="password" class="form-control" name="old_password" placeholder="Ancien mot de passe" ngModel (keyup)="actualizeErrorMessage()">
+      </div>
+
+      <div class="form-group" *ngIf="setPassword">
+        <label for="new_password">Nouveau mot de passe</label>
+        <input type="password" class="form-control" name="new_password" placeholder="Nouveau mot de passe (8 caractères minimun, dont une lettre et un chiffre)"  
+               (keyup)="actualizeErrorMessage()" ngModel>
+      </div>
+
+      <div class="form-group" *ngIf="setPassword">
+        <label for="confirm_password">Confirmation du mot de passe</label>
+        <input type="password" class="form-control" name="new_password_confirm" placeholder="Confirmer le mot de passe"  
+               (keyup)="actualizeErrorMessage()" ngModel>
+      </div>        
+		
+      <div class="form-group">
+        <button type="submit" class="btn btn-lg btn-block edition-btn">Valider les modifications</button>
+      </div>
+    </form>
+  </div>
+  <div class="update-validation" *ngIf="updateComplete">
+    <div class="alert alert-success" role="alert">
+      <h3 class="alert-heading">Données mises à jour !</h3>
+      <hr>
+      <p>La mise à jour de vos données a été réalisée avec succès.</p>
+    </div>
+  </div>
+</div>

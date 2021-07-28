@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="user-name">
+    <p>Bonjour <strong>{{firstName}} {{lastName}}</strong></p>
+  </div>
+  <div class="user-infos row">
+    <div class="user-address col-sm-12 col-lg-8">
+      <div id="bloc">
+        <div id="icone"><i class="fa fa-map-marker fa-4x"></i></div><h3>Adresse</h3>
+        <div id="coord-data">
+          <div><p>{{address}}, {{zipCode}} {{city}},</p></div>
+          <div><p><strong>{{country}}</strong></p></div>
+        </div>
+      </div>
+    </div>
+    <div class="user-address col-sm-12 col-lg-4">
+      <div id="bloc">
+        <div id="icone"><i class="fa fa-phone fa-4x"></i></div><h3>Téléphone</h3>
+        <div id="coord-data">
+          <div><p>{{phoneNumber}}</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="update-user-infos col-sm-12"><a href="#" routerLink="/profil/edition" [queryParams]="{q: 'adresse'}">Modifier</a></div>
+  </div>
+  <div class="row">
+    <a href="#" routerLink="/profil/edition" [queryParams]="{q: 'pass'}">Modifier votre mot de passe</a>
+  </div>
+  <div class="user-transactions row">
+    <h2>Dernières opérations</h2><hr>
+    <div class="transactions-list">
+      <table class="table table-striped">
+        <tbody>
+          <tr *ngFor="let tr of transactions">
+            <td>{{tr.transaction_date | date:'dd/MM/yyyy':'GMT':'fr-FR'}}</td>
+            <td>{{tr.name}}</td>
+            <td><a href="#" routerLink="/recepisse/transaction/{{tr.transaction_reference}}">voir le récépissé</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

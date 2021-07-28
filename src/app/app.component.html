@@ -9,64 +9,65 @@
   </button>  
   
   <div class="collapse control-collapse">
-     <div class="row">
+ 
+     <div class="row ">
 
-      <div class="col-sm-1 col-sm-offset-1 logo-visuum active">
-        <a href="#">
-          <img class="img-responsive" src="../src/assets/images/logo_visuum.png" alt="Logo">
-        </a>
-      </div>
-
+        <div class="col-lg-1 col-md-1 col-sm-1 col-sm-offset-1 logo-visuum active">
+          <a href="#">
+            <img class="img-responsive" src="../src/assets/images/logo_visuum.png" alt="Logo" class="logo-visuum1">
+          </a>
+        </div>
       <!--/.col-*-3 -->
-      <div class="col-sm-4">
-        <!--/.col-*-4 :: nested -->
-        <div class="col-sm-2 indicator">
-          <span class="title"><a class="nav-link" href="#" routerLink="/boutiques">Boutiques</a></span>
-        </div>
-        <!--/.col-*-4.indicator :: nested -->
-        <div class="col-sm-3 indicator">
-          <span class="title"><a class="nav-link" href="#" routerLink="/entreprises">Entreprises</a></span>
-        </div>
-        <!--/.col-*-4.indicator :: nested -->
-        <div class="col-sm-3 indicator">
-          <span class="title"><a class="nav-link" href="#" routerLink="/stages-emplois">Stages / Emplois</a></span>
-        </div>
-        <!--/.col-*-4.indicator :: nested -->
-        <div class="col-sm-4 indicator">
-          <span class="title"><a class="nav-link" href="#" routerLink="/a-propos">À propos</a></span>
-          <!-- <span class="number">1</span>-->
-        </div>
-        <!--/.col-*-4.indicator :: nested -->
+        <div class="col-lg-7 col-md-7 col-sm-7">
+          <div class="row">
+            <!--/.col-*-4.indicator :: nested -->
+            <div class="col-lg-2 col-md-2 col-sm-2 indicator">
+              <span class="title"><a class="nav-link" href="#" routerLink="/a-propos">À propos</a></span>
+              <!-- <span class="number">1</span>-->
+            </div>
+            <!--/.col-*-4.indicator :: nested -->
+            <div class="col-lg-2 col-md-2 col-sm-2 indicator">
+              <span class="title"><a class="nav-link" href="#" routerLink="/boutiques">Boutiques</a></span>
+            </div>
+            <!--/.col-*-4.indicator :: nested -->
+            <div class="col-lg-2 col-md-2 col-sm-2 indicator">
+              <span class="title"><a class="nav-link" href="#" routerLink="/entreprises">Entreprises</a></span>
+            </div>
+            <!--/.col-*-4.indicator :: nested -->
+            <div class="col-lg-2 col-md-2 col-sm-2 indicator">
+              <span class="title"><a class="nav-link" href="#" routerLink="/stages-emplois">Stages/Emplois</a></span>
+            </div>
+             <!--/.col-*-4.indicator :: nested -->
+              <div class="col-lg-2 col-md-2 col-sm-2 indicator">
+                <span class="title"><a class="nav-link" href="#" routerLink="/bons-achat">Bons d'achat</a></span>
+              </div>
+            <!-- /.col-*-4.indicator :: nested -->
+            <div class="col-lg-2 col-md-2 col-sm-2 indicator dropdown">
+                <a id="dLabel" class="dropdown-toggle nav-link" data-toggle="dropdown" href="#">Mon compte<b class="caret"></b></a>
+                <!-- <span class="number">1</span>-->
+                <ul class="dropdown-menu">
+                  <li *ngIf="! dbService.isUserLoggedIn()"><a href="#" routerLink="/connexion">Se connecter</a></li>
+                  <li *ngIf="! dbService.isUserLoggedIn()"><a href="#" routerLink="/inscription">S'inscrire</a></li>
+                  <li *ngIf="dbService.isUserLoggedIn()"><a href="#" routerLink="/profil">Afficher le profil</a></li>
+                  <li *ngIf="dbService.isUserLoggedIn()" class="divider"></li>
+                  <li *ngIf="dbService.isUserLoggedIn()"><a href="#" (click)="dbService.logOut()">Se déconnecter</a></li>
+                </ul>
+            </div>
+          
+          <!--/.row (nested) -->
+          </div>
       </div>
-      
-      <!--/.col-*-7 -->
-      <div class="col-sm-5">
-        <div class="input-group">
+      <!--/.col-*-4 -->
+        <div class="input-group col-lg-4 col-md-4 col-sm-4">
           <input type="text" class="form-control" placeholder="Recherche ...">
           <span class="input-group-btn">
             <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
           </span>
         </div>
         <!-- /input-group -->
-      </div>
+     
+      <!--/.col-*-4 -->
       
-      <!--/.col-*-3 -->
-      <div class="col-sm-2">
-        <div class="row">
-          <div class="col-sm-6 indicator">
-            <span class="title"><a id="dLabel" class="nav-link" href="#" routerLink="/connexion">Mon compte<span class="caret"></span></a></span>
-            <!-- <span class="number">1</span>-->
-          </div>
-          <!--/.col-*-4.indicator :: nested -->
-          <div class="col-sm-6 indicator">
-            <span class="title"><a class="nav-link" href="#" routerLink="/bons-achat">Bons d'achat</a></span>
-          </div>
-        <!-- /.col-*-4.indicator :: nested -->
-        </div>
-        <!--/.row (nested) -->
-      </div>
-      
-      <!--/.col-*-7 -->
     </div>
     <!--/.row -->
   </div>

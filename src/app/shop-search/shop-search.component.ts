@@ -19,8 +19,7 @@ export class ShopSearchComponent implements OnInit {
     { id: 7, name: 'Commerce Générale & Distribution'}
   ]
 
-  shops = []
-
+  searchResult = []
   searchText = ''
   categoryText = ''
   nameText = ''
@@ -39,7 +38,9 @@ export class ShopSearchComponent implements OnInit {
     let nameTerm = ''
     let locationTerm = ''
 
-    
+    this.categoryText = ''
+    this.nameText = ''
+    this.locationText = ''
 
     if(value.shop_type) {
      categoryTerm = 'categorie=' + value.shop_type
@@ -61,14 +62,14 @@ export class ShopSearchComponent implements OnInit {
     const name = this.activatedRoute.snapshot.queryParams.nom
     const location = this.activatedRoute.snapshot.queryParams.localisation
 
-    console.log('catégorie : ', category)
     if(!category) {
       category = 0
     } else {
       if(category == 0) {
         this.categoryText = ' de toutes catégories'
       } else {
-        this.categoryText = ' de catégorie "' + this.typesOfShops.find(ts => ts.id == category)["name"] + '"'
+        let foundedCategory = this.typesOfShops.find(ts => ts.id == category)
+        if (foundedCategory) this.categoryText = ' de catégorie "' + this.typesOfShops.find(ts => ts.id == category)["name"] + '"'
       }
     }
 
@@ -93,16 +94,23 @@ export class ShopSearchComponent implements OnInit {
   private launchQuery(urlArgs) {
     this.dbService.getShopsByUrl(urlArgs)
                   .subscribe(
-                    data => {
-                      this.shops = data; 
-                      if(data.success) {
-                        this.displaySearchText = true
-                      } else {
-                        this.displaySearchText = false
-                      }
-                    },
-                    error => console.error(error)
+                    data => this.handleSuccess(data),
+                    error => this.handleError(error)
                   )
+  }
+
+  handleSuccess(data) {
+    this.searchResult = data
+    this.displaySearchText = true
+  }
+
+  handleError(error) {
+    let errorMessage = error.json().message
+    console.log('error message : ', errorMessage)
+    this.searchResult = []
+    if (error.status == 404) {
+      // this.noneResultMessage = "Aucune boutique ne correspond aux critères de votre recherche"
+    }
   }
 
 }

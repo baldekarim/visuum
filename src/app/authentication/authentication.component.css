@@ -1,4 +1,4 @@
-.main{
+.panel-heading{
     margin-top: 70px;
 }
 
@@ -79,4 +79,8 @@ p {
     .main-center {
         max-width: 330px;
     }
+}
+
+.test {
+    margin-top: 200px;
 }

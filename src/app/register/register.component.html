@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="! isRegistrationComplete">
   <div class="panel-heading">
     <div class="panel-title text-center">
       <h1 class="title">Visuum</h1>
@@ -6,16 +6,17 @@
     </div>
   </div>
   <div class="signup-form">
-    <form action="" method="post">
+    <form #registerForm="ngForm" (ngSubmit)="register(registerForm.value)">
       <h2>Inscription</h2>
       <p class="hint-text">Créer gratuitement votre compte. Ça ne prend qu'une minute !</p>
+      <div *ngIf="errorMessage" class="alert alert-danger"><a class="close" data-dismiss="alert" href="#">×</a>{{errorMessage}}</div>
       <div class="form-group">
         <div class="row">
           <div class="col-sm-12 col-md-6 col-lg-6">
-            <input type="text" class="form-control" name="last_name" placeholder="Nom" required>
+            <input type="text" class="form-control" name="last_name" placeholder="Nom" ngModel required>
           </div>
           <div class="col-sm-12 col-md-6 col-lg-6">
-            <input type="text" class="form-control" name="first_name" placeholder="Prénom" required>
+            <input type="text" class="form-control" name="first_name" placeholder="Prénom" ngModel required>
           </div>
         </div>
       </div>
@@ -23,42 +24,44 @@
       <div class="form-group">
         <div class="row">
           <div class="col-sm-12 col-md-6 col-lg-6">
-            <select name="country"  >
+            <select name="country" ngModel required>
               <option value="" disabled selected>Pays</option>
               <option *ngFor="let ct of countries" [value]="ct">{{ct}}</option>
             </select>
           </div>
           <div class="col-sm-12 col-md-6 col-lg-6">
-            <input type="text" class="form-control" name="phone_number" placeholder="Téléphone" required>
+            <input type="text" class="form-control" name="phone_number" placeholder="Téléphone" ngModel required>
           </div>
         </div>
       </div>
 
       <div class="form-group">
-        <input type="address" class="form-control" name="address" placeholder="Adresse (Numéro et nom de la voie)" required>
+        <input type="address" class="form-control" name="address" placeholder="Adresse (Numéro et nom de la voie)" ngModel required>
       </div>
 
       <div class="form-group">
         <div class="row">
           <div class="col-sm-12 col-md-6 col-lg-6">
-            <input type="text" class="form-control" name="city" placeholder="Ville" required>
+            <input type="text" class="form-control" name="city" placeholder="Ville" ngModel required>
           </div>
           <div class="col-sm-12 col-md-6 col-lg-6">
-            <input type="text" class="form-control" name="zipcode" placeholder="Code Postal" required>
+            <input type="text" class="form-control" name="zipcode" placeholder="Code Postal" ngModel required>
           </div>
         </div>
       </div>
 
       <div class="form-group">
-        <input type="email" class="form-control" name="email" placeholder="E-mail" required>
+        <input type="email" class="form-control" name="email" placeholder="E-mail"  (keyup)="actualizeErrorMessage()" ngModel required>
       </div>
 
       <div class="form-group">
-        <input type="password" class="form-control" name="password" placeholder="Mot de passe (au moins 8 caractères)" required>
+        <input type="password" class="form-control" name="password" placeholder="Mot de passe (8 caractères minimun, dont une lettre et un chiffre)"  
+               (keyup)="actualizeErrorMessage()" ngModel required>
       </div>
 
       <div class="form-group">
-        <input type="password" class="form-control" name="confirm_password" placeholder="Confirmer le mot de passe" required>
+        <input type="password" class="form-control" name="confirm_password" placeholder="Confirmer le mot de passe"  
+               (keyup)="actualizeErrorMessage()" ngModel required>
       </div>        
 
       <!--
@@ -66,15 +69,22 @@
         <label class="form-check-label">
         <input type="checkbox" required="required"> I accept the <a href="#">Terms of Use</a> &amp; 
         <a href="#">Privacy Policy</a></label> 
-		  </div>-->
+		  </div>   
+    -->
 		
       <div class="form-group">
-        <button type="submit" class="btn btn-lg btn-block register-btn">S'inscrire</button>
+        <button type="submit" class="btn btn-lg btn-block register-btn" [disabled]="registerForm.invalid">S'inscrire</button>
       </div>
     
     </form>
 	  
-    <div class="text-center">Vous avez déjà un compte ? <a href="#" routerLink="/login"> Se connecter</a></div>
+    <div class="text-center">Vous avez déjà un compte ? <a href="#" routerLink="/connexion"> Se connecter</a></div>
   
   </div>
+</div>
+
+<div class="container confirm" *ngIf="isRegistrationComplete">
+  <h2>Votre inscription est presque terminée</h2>
+  <h3>Connectez-vous à votre messagerie pour valider votre adresse mail</h3><br/>
+  <p>Vérifiez dans vos spams si vous ne trouvez pas de mail <a href="#" routerLink="/connexion">Se connecter sur Visuum</a></p>
 </div>

@@ -39,7 +39,7 @@ export class ShopSearchResultComponent implements OnInit {
 
   handleSearchResult(data) {
     if(data.success) {
-      this.shops = data.shops
+      this.shops = data.shops_found
       this.nbShopsFound = this.shops.length
       this.rows = Array.from(
         Array(Math.ceil(this.nbShopsFound / this.itemsPerRow)).keys()
@@ -49,7 +49,7 @@ export class ShopSearchResultComponent implements OnInit {
     } else {
       this.shops = []
       this.displayNoneResultMessage = true
-      this.noneResultMessage = data.message
+      this.noneResultMessage = "Aucune boutique ne correspond aux critères de votre recherche"
     }
 
     if(this.shops.length == 1) {

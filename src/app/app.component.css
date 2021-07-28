@@ -1,17 +1,25 @@
+
 /*=============== Bar menu-recherche ===============*/
 
 .control-bar {
+    width: 100%;
     background: #ffb570;
     color: #fff;
     clear: both;
+    box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.7),
+            -1px 2px 20px rgba(255, 255, 255, 0.6) inset; 
 }
 
 .control-bar .logo-visuum {
-    margin: 0px;
+    margin: 0px 0px 0px 0px;
     background : #000;
-    padding: 0px;
+    cursor:pointer;
+    padding: 0px 0;
 }
-
+.control-bar .logo-visuum1 {
+    width: 100%;
+    margin:0 auto; 
+}
 .control-bar a {
     color:#fff
 }
@@ -27,26 +35,38 @@
 }
 
 .indicator:hover, .indicator.active {
-    background : #FBC68B;
+    background : #F1880B;
 }
 
 .control-bar .indicator {
     cursor:pointer;
-    padding: 20px 0;
+    padding: 6px 0;
+    margin: 0px 0px 0px 0px;
     border-bottom: 5px solid transparent;
 }
-
-.indicator a {
-    font-size: 18px;
+ .indicator a {
+    font-weight: bold;
 }
-
-.control-bar .input-group {
-    padding-top: 10px;
+.control-bar .form-control {
+        height: 26px;
+}
+.control-bar .btn {
+        height: 26px;
 }
 
 .icon-link a {
     padding: 10px 0;
     display: block;
+}
+
+.dropdown li a {
+     font-size: 12px;
+}
+.dropdown-menu {
+     background:#ffb570;
+}
+.dropdown li a:hover, .dropdown.active {
+    background : #F1880B;
 }
 
 /* how it looks on larger viewports*/
@@ -56,8 +76,8 @@
         padding: 0;
     }
     .indicator {
-        height: 35px;
-        padding: 10px 0 0 0;
+        height: 25px;
+        padding: 5px 0 0 0;
         display: table;
     }
     .indicator span {
@@ -67,21 +87,22 @@
         vertical-align: middle;
 
     }
-    .indicator .title {
-        font-size: 15px;
-        font-weight: bold;
-       /* text-transform: uppercase;*/
-    }
-  
+    
     .indicator .notice {
         font-size: 12px
     }
     /* height of parent minus by height of element divided by 2 */
     .control-bar .input-group {
-        margin-top: 7px
+        margin-top: 5px;
+        padding: 0 5px 5px;
     }
     .btn-default:hover {
-    background : #FBC68B
+        background : #FBC68B
+}
+.control-bar .logo-visuum1 {
+      height: 40px; 
+       width: 90%;
+      margin:0 auto; 
 }
     .icon-link {
         text-align: right;
@@ -90,7 +111,57 @@
     .nav-link {
         text-decoration: none !important;
     }
+    .control-bar .dropdown {
+    text-align: center;
+    text-decoration:none;
+}
+ 
 } 
+
+@media screen and (max-width: 400px) {
+    @-ms-viewport { width: 320px; }
+    /* CSS for 320px layout goes here */
+    .indicator a {
+    font-size: 18px;  
+}
+    .control-bar .indicator {
+    cursor:pointer;
+    padding: 5px 0;
+    border-bottom: 5px solid transparent;
+}
+
+}
+
+@media screen and (min-width: 400px) and (max-width: 640px) {
+    @-ms-viewport { width: 400px; }
+    /* CSS for 400px layout goes here */
+    .indicator a {
+    font-size: 16px;
+}
+}
+
+@media screen and (min-width: 640px) and (max-width: 1024px) {
+    @-ms-viewport { width: 640px; }
+    /* CSS for 640px layout goes here */
+    .indicator a {
+    font-size: 10px;
+}
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1366px) {
+    @-ms-viewport { width: 1024px; }
+    /* CSS for 1024px layout goes here */
+    .indicator a {
+    font-size: 13px;
+}
+}
+
+@media screen and (min-width: 1366px) {
+    /* CSS for 1366px layout goes here */
+    .indicator a {
+    font-size: 16px;
+}
+}
 /*=============== //Bar menu-recherche ===============*/
 
 /*=============== //Footer ===============*/
@@ -106,7 +177,7 @@
        padding: 5px 0px 5px;
 }
 .site-visuum{
-       color: #F1880B;
+       color: #FBC68B;
 }
 .footer_Adresse{
 	background: #000000;

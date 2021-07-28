@@ -1,0 +1,70 @@
+.recipient-all {
+    margin-top: 50px;
+}
+
+.recipient-add {
+    background-color: #fff;
+    border-radius:15px;
+    height: 250px;
+    margin-top: 50px;
+}
+
+.recipient-add, input {
+    padding: 5px 15px 5px 15px;
+}
+
+.recipient-add form {
+    padding-top: 20px;
+}
+
+button {
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+    background-color: #343A40;
+    border-radius: 5px;
+    width: 200px;
+    height: 50px;
+}
+
+.btn-add {
+    width: 500px;
+    margin: auto;
+}
+
+.btn-add > .btn {
+    width: 350px;
+}
+
+.btn:hover {
+    color: #fff;
+}
+
+.recipient-add button {
+    margin-bottom: 20px;
+    position: relative;
+    float: right;
+}
+
+h3 {
+    text-align: center;
+    font-weight: bold;
+    color:#343A40;
+    margin-bottom: 30px;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.recipient-list {
+    margin-top: 80px;
+}
+
+select {
+    margin-bottom: 50px;
+    width: 100%;
+}
+
+.validate-recipient button {
+    width: 300px;
+    float: right;
+}

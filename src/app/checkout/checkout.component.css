@@ -1,0 +1,44 @@
+h3 {
+    text-align: center;
+    font-weight: bold;
+    color:#343A40;
+    margin-bottom: 30px;
+    font-size: 40px;
+    font-weight: bold;
+    margin-top: 50px;
+}
+
+.img-cont {
+    max-width: 600px;
+    margin: auto;
+}
+
+p {
+    color: red;
+}
+
+button {
+    float: right;
+    margin-top: 20px;
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+    background-color: #343A40;
+    border-radius: 5px;
+    width: 200px;
+    height: 50px;
+}
+
+.transaction-complete {
+    margin-top: 50px;
+}
+
+.transaction-complete p {
+    color: #343A40;
+    font-size: 20px;
+}
+
+.transaction-complete p span {
+    color: #ffb570;
+    font-weight: bold;
+}

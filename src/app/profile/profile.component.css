@@ -1,0 +1,57 @@
+.user-name {
+    margin-top: 30px;
+    float: right; 
+}
+
+.user-infos {
+    margin-top: 80px;
+}
+
+p, a, td {
+    font-family: Helvetica, Impact, "Arial Black", Arial, Verdana, sans-serif;
+    font-size: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: #ffb570;
+    font-weight: bold;
+}
+
+h3 {
+    font-size: 40px;
+    font-weight: bold;
+    color:#ffb570;
+}
+
+h2 {
+    font-size: 50px;
+    font-weight: bold;
+    color:#343A40;
+    margin: 15px;
+}
+
+#icone {
+    float: left;
+    margin-right: 10px;
+}
+
+#coord-data, .update-user-infos {
+    margin-left: 30px;
+}
+
+#bloc {
+    margin-bottom: 10px;
+}
+
+.update-user-infos {
+    margin-bottom: 15px;
+}
+
+.user-transactions {
+    margin-top: 30px;
+}
+
+.log-in-message {
+    margin-top: 50px;
+}

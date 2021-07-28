@@ -10,7 +10,6 @@ import { DbService } from '../services/db.service';
 export class ShopDetailsComponent implements OnInit {
 
   shopDetails = null
-  error = ''
   errorMessage = ''
 
   shopName = ''
@@ -33,20 +32,27 @@ export class ShopDetailsComponent implements OnInit {
     this.dbService.getShopByName(name)
                   .subscribe(
                     data => {
-                      if (data.success) {
-                        this.shopDetails = data.shop_found;
-                        this.imagesPath = data.images_path.split('|||')
-                        this.loadShop(this.shopDetails)
-                      } else {
-                        console.log('error : ', data.message)
-                        this.router.navigate(['page-inexistante'])
-                      }
+                      this.handleSuccess(data)
                     },
                     error => {
-                      this.error = error;
-                      this.errorMessage = error.message;
+                      this.handleError(error)
                     }
                   );                 
+  }
+
+  handleSuccess(data) {
+    this.shopDetails = data.shop_found;
+    this.imagesPath = data.images_path.split('|||')
+    this.loadShop(this.shopDetails)
+  }
+
+  handleError(error) {
+    this.errorMessage = error.message;
+    console.log('error message : ', this.errorMessage)
+    if (error.status == 404) {
+      console.log('Page inexistante')
+    }
+    //this.router.navigate(['page-inexistante'])
   }
 
   loadShop(data) {

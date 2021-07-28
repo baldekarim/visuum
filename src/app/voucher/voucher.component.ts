@@ -115,17 +115,25 @@ export class VoucherComponent implements OnInit {
   validateOrder() {
     console.log('Prepare for next step ...')
     console.log('Post in database at transaction_details table the following informations : ')
-    console.log('withdrawal_id => ', this.selectedWithdrawalId)
-    console.log('number_of_vouchers => ', this.selectedQuantity)
-    console.log(':: exchange_rate => ', this.exchangeRate)
-    console.log(':: amount_gnf => ', this.amountGnf)
-    console.log('shipping => ', this.shipment) 
-    console.log('total_amount => ', this.totalAmount)
 
-    let isUserLoggedIn = false
-    if (isUserLoggedIn) {
-      console.log('Get to recipient')
+    let transaction = {
+      'withdrawal_id': this.selectedWithdrawalId,
+      'number_of_vouchers': this.selectedQuantity,
+      'exchange_rate': this.exchangeRate,
+      'amount_gnf': this.amountGnf,
+      'shipping': this.shipment,
+      'total_amount': this.totalAmount, 
+      'recipient_selected': -1, 
+      'transaction_reference': ''
+    }
+
+    this.dbService.initiateUserTransaction(transaction)
+
+    if (this.dbService.isUserLoggedIn()) {
+      this.router.navigate(['/beneficiaire'])
     } else {
+      //this.router.navigateByUrl('/connexion?redirect=/test')
+      this.dbService.updateRedirectToRecipient()
       this.router.navigate(['/connexion'])
     }
   }
